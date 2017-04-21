@@ -18,10 +18,6 @@ form['password'].value = passwd
 browser.submit_form(form)
 
 soup = browser.parsed
-"""
-courses = [i.get_text().strip().split('_')[0] for i in soup.find_all('div', {'class':'m-l-1'})]
-pprint(courses)
-"""
 
 for i in soup.find_all('h3')[2:]:
 	print(i.get_text())
