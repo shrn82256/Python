@@ -1,6 +1,19 @@
 from robobrowser import RoboBrowser
 from bs4 import BeautifulSoup
 from pprint import pprint
+import urllib.request
+
+def get_raw_url(file_url):
+	user_agent = 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.9.0.7) Gecko/2009021910 Firefox/3.0.7'
+	headers={'User-Agent':user_agent,}
+	
+	request = urllib.request.Request(file_url, None, headers)
+	response = urllib.request.urlopen(request)
+	data = response.read()
+	soup = BeautifulSoup(data, 'html.parser')
+
+	raw_cmd = soup.find('a', {'target':'_blank', 'title':'View in plain-text'})
+	return "https://notepad.pw" + raw_cmd['href']
 
 browser = RoboBrowser(
 	history=True, 			
@@ -17,15 +30,13 @@ form['password'].value = uid
 browser.submit_form(form)
 
 soup = browser.parsed
-"""
-courses = [i.get_text().strip().split('_')[0] for i in soup.find_all('div', {'class':'m-l-1'})]
-pprint(courses)
-"""
 
 files_url = []
 
 for i in soup.find_all('a', {'target':'_blank'}, href=True)[:-1]:
 	files_url.append("https://www.%s" % i['href'][2:])
-pprint(files_url)
 
-for i in files
+files_raw_urls = [get_raw_url(file_url) for file_url in files_url]
+
+pprint(files_raw_urls)
+	
