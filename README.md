@@ -1,5 +1,6 @@
 # Some of my projects
 Here are some of my programmes along with their description
+-  ep_renamer.py  - Renames your episode given a directory, epsiode name and seasion number
 -  get_moodleCourses.py  - This will show you all your registered courses from moodle. You have to input your moodle ID and password
 -  get_temperature.py  - This will show you the weather, temperature and wind speed of the given place. Usage: python3 get_temperature.py cityName
 -  goldSilver_rates.py  - This will show you the current Gold and Silver Rates
