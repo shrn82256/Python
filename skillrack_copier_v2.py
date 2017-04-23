@@ -2,9 +2,16 @@ from pykeyboard import PyKeyboard
 from sys import argv
 import pyxhook
 
+def getText():
+	f = open(file, 'r').readlines()
+	i = f.index('//START\n') + 1
+	j = f.index('//END\n')
+	t = ''.join(f[i:j])
+	return t
+
 def typer():
 	k = PyKeyboard()
-	text = open(file, 'r').read()
+	text = getText()
 	k.tap_key(k.backspace_key)
 	temp = 0
 	
