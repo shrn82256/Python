@@ -7,7 +7,7 @@ def getText():
 	# i = f.index('//START\n') + 1
 	# j = f.index('//END\n')
 	# t = ''.join(f[i:j])
-	return raw_input()
+	return raw_input("")
 
 def typer():
 	k = PyKeyboard()
