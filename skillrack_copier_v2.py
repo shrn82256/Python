@@ -3,11 +3,11 @@ from sys import argv
 import pyxhook
 
 def getText():
-	f = open(file, 'r').readlines()
-	i = f.index('//START\n') + 1
-	j = f.index('//END\n')
-	t = ''.join(f[i:j])
-	return t
+	# f = open(file, 'r').readlines()
+	# i = f.index('//START\n') + 1
+	# j = f.index('//END\n')
+	# t = ''.join(f[i:j])
+	return raw_input()
 
 def typer():
 	k = PyKeyboard()
@@ -40,8 +40,9 @@ def OnKeyPress(event):
 		typer()
 		new_hook.cancel()
 
-script, file = argv
-print(file)
+# script, file = argv
+# file = input()
+# print(file)
 
 new_hook = pyxhook.HookManager()
 new_hook.KeyDown = OnKeyPress
